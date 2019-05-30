@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="teacher">
+
+    <select id="selectTeacher" resultType="com.lovo.servlet.mybaits.entity.TeacherEntity" >
+        select teacher_id  teacherId,teacher_name teacherName,teacher_class teacherClass from sys_teacher
+    </select>
+</mapper>
