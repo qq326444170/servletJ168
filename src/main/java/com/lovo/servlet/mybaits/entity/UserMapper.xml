@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userShit">
+
+    <resultMap id="userMapId" type="userEntity">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="user_age" property="userAge"></result>
+    </resultMap>
+    <select id="selectUser" resultMap="userMapId" >
+        select * from sys_user
+    </select>
+    <sql id="sId">
+        user_id,user_name,user_pwd,user_age
+    </sql>
+    <select id="selectUser2" resultMap="userMapId" parameterType="userEntity">
+        select <include refid="sId"></include> from sys_user where user_id=#{userId};
+    </select>
+</mapper>

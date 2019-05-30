@@ -22,11 +22,18 @@ public class GetSession {
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
+            //用建造者设计模式创建了一个SqlSessionFactory.
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        //用建造者设计模式创建了一个SqlSessionFactory.
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
     }
     //获得一个Session，链接
     public static SqlSession creatSession(){

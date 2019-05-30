@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentSpace">
+
+    <resultMap id="studentMapId" type="studentEntity">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="user_age" property="userAge"></result>
+        <result column="user_grade" property="userGrade"></result>
+    </resultMap>
+    <sql id="sqlId">
+        user_name,user_pwd,user_age,user_grade
+    </sql>
+    <insert id="insertId" parameterType="studentEntity">
+        insert into sys_student(<include refid="sqlId"></include>)values
+        (#{userName},#{userPwd},#{userAge},#{userGrade})
+    </insert>
+</mapper>
